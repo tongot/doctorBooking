@@ -1,0 +1,41 @@
+{% extends 'app_layout.html' %}
+{% load static %}
+{% block content %}
+<!-- Form -->
+<style>
+    .login{
+        width: 500px;
+        margin: 0 auto;
+        margin-bottom: 500px;
+        padding: 20px ;
+        padding-bottom: 50px;
+    }
+    .register{
+        background: rgba(66, 139, 248, 0.7);
+        color:white;
+        padding: 20px ;
+    }
+    .btnSubmit{
+        float: right;
+    }
+    .textLogin{
+        width: 300;
+        margin: 0 auto;
+    }
+    
+</style>
+
+        <section id="main" class="wrapper test">
+            <div class="6u$ 12u$(small) login" >
+								
+								<form method="post" class=" register inner" action="/account/register">
+                                     {% csrf_token %}
+                                     <h3 style="color:white">Register</h3>
+                                    {{form}}
+                                    <br>
+                                    <input type="submit" value="Register" class="button default small"/>
+                                </form>
+                </div>
+        </section>
+
+{% endblock %}

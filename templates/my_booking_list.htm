@@ -1,0 +1,25 @@
+{% extends 'app_layout.html' %}
+{% load static %}
+{% block content %}
+<section class="inner wrapper">
+    <h2>My Bookings List</h2>
+    <div class="box flex flex-4">
+        {% for appointment in appointments %}
+        <div class="box">
+            <h3>{{appointment.appointment_number}}</h3>
+            <h4>{{appointment.bookedfor}}</h4>
+            
+            <p>Booked on {{appointment.appointment_date.date}}</p>
+            <p>{{appointment.symptoms}}</p>
+            <strong>Status</strong> :{{appointment.status}}
+            <hr>
+            <p>
+                {% ifequal appointment.status "Awaiting" %}
+                <a href="/booking/cancel/{{appointment.id}}" class="link">cancel</a> &nbsp; 
+                {% endifequal %}
+        </p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

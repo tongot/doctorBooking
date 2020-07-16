@@ -1,0 +1,38 @@
+{% extends 'app_layout.html' %}
+{% load static %}
+{% block content %}
+
+                            <style>
+    
+                                .btnSubmit{
+                                    float: right;
+                                }
+                                .textLogin{
+                                    width: 300;
+                                    margin: 0 auto;
+                                }
+                                .register{
+                                    background: rgba(66, 139, 248, 0.7);
+                                    color:white;
+                                }
+                            </style>
+                            <section class="wrapper inner">
+                                               <div class="login-page ">
+                                <br>
+                                <div class="form">
+                                    
+                                    <form method="POST" id="form_book" class="login box" action="/booking/">
+                                        <a href="/booking/my_booking_list" class="btnSubmit button small alternate"  type="submit">Submit</a>
+                                        <h2>Booking</h2>
+                                    {% csrf_token %} 
+                                    {{form}}
+                                    <br>
+                                    <button class="btnSubmit button" type="submit">Submit</button>
+                                  </form>
+                                  
+                                </div>
+                              </div>             
+                            </section>
+
+
+{% endblock %}

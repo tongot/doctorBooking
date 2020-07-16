@@ -1,0 +1,34 @@
+{% extends 'app_layout.html' %}
+{% load static %}
+{% block content %}
+
+<section id="main" class="wrapper">
+    <div class="inner">
+<h2>Are you sure you want to delete this record!</h2>
+      <div class="box">
+          
+            <dl>
+        <dt>Name</dt>
+        <dd>{{details.first_name}}</dd>
+        <dt>Last Name</dt>
+        <dd>{{details.last_name}}</dd>
+        <dt>Date of birth</dt>
+        <dd>{{details.date_of_birth}}</dd>
+        <dt>Date Registered</dt>
+        <dd>{{details.date_of_registry}}</dd>
+        <dt>Gender</dt>
+        <dd>{{details.gender}}</dd>
+       
+    </dl>
+      </div>
+      <a href="/account/register_dependent">back to list</a>
+      <form action="/account/delete_dependend/{{details.id}}" method="POST">
+        {% csrf_token %}
+        <button class="special small button" type="submit" style="float: right;">Confirm Delete</button>
+    </form>
+      
+    </div>
+</section>
+   
+  
+{% endblock %}

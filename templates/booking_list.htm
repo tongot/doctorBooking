@@ -1,0 +1,59 @@
+{% extends 'app_layout.html' %}
+{% load static %}
+{% block content %}
+<!-- Form -->
+		<style>
+			.hidden{
+				display: none;
+			}
+			.right
+			{
+				float:right;
+			}
+		</style>
+        <section id="main" class="wrapper">
+            <div class="inner"><h2>Bookings List</h2>
+            <div class="row box">
+				<div class="2u 12u$(small)">
+			<form action="" method="POST" class="box">
+							    {% csrf_token %} 
+								{{form}}
+								<br>
+								<input type="submit" value="Search" class="button small fit special"/>
+							</form>
+				</div>
+				
+                <div id="bookings_list" class="10u$ 12u$(small)">
+					<div >
+						<br>
+						<div class="flex flex-4">
+							{% for book in booking_list %}
+							<div class="box">
+								<h3>{{book.appointment_number}}</h3>
+								<h4>{{book.bookedfor}}</h4>
+								
+								<p>Booked on {{book.appointment_date.date}}</p>
+								<p>{{book.symptoms}}</p>
+								<hr>
+								<p>
+								{% ifequal book.status "Awaiting" %}
+								<a href="/booking/booking_list/{{book.id}}" type="submit" class="button special small">Complete</a>
+								
+								{% endifequal %}
+								{% ifequal book.status "Completed" %}
+								<a class="small">Completed</a>
+								<a href="/booking/booking_detail/{{book.id}}" type="submit" class=" right icon special fa fa-trash"></a>
+								{% endifequal %}
+							</p>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+
+            </div>
+            </div>
+            </div>
+        </section>
+
+        
+{% endblock %}

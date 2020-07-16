@@ -1,0 +1,27 @@
+{% extends 'app_layout.html' %}
+{% load static %}
+{% block content %}
+<!-- Form -->
+		<style>
+			.hidden{
+				display: none;
+			}
+			.right
+			{
+				float:right;
+			}
+        </style>
+                <section id="main" class="wrapper">
+                    <div class="inner"><h2>{{action}} Dependent</h2>
+<div class="12u 12u$(small) box">
+    <form method="post" action="">
+         {% csrf_token %}
+        {{form}}
+        <br>
+        <a href="/account/register_dependent">back to list</a>
+        <input type="submit" value="Save" class="button special small right"/>
+    </form>
+</div>
+</div>
+<section
+{% endblock %}

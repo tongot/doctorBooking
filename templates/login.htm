@@ -1,0 +1,33 @@
+{% extends 'app_layout.html' %}
+{% load static %}
+{% block content %}
+<style>
+    
+    .btnSubmit{
+        float: right;
+    }
+    .textLogin{
+        width: 300;
+        margin: 0 auto;
+    }
+    .register{
+        background: rgba(66, 139, 248, 0.7);
+        color:white;
+    }
+</style>
+<div class="login-page test ">
+    <div class="form">
+      <form class="login register inner" action="/account/login" method="POST">
+        {% csrf_token %} 
+          <h3 style="color: white;">log in</h3>
+          <label>{{Error}}</label>
+          <label for="user_email">Email</label>
+            <input placeholder="Email" name="email" type="text">
+            <label for="user_email">Password</label>
+            <input  placeholder="Password" type="password" name="password">
+            <br>
+            <button class="btnSubmit button icon fa-lock" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}

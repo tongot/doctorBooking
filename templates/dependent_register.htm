@@ -1,0 +1,57 @@
+{% extends 'app_layout.html' %}
+{% load static %}
+{% block content %}
+<!-- Form -->
+		<style>
+			.hidden{
+				display: none;
+			}
+			.right
+			{
+				float:right;
+			}
+		</style>
+        <section id="main" class="wrapper">
+            <div class="inner"><h2>Dependencies</h2>
+            <div class="row box">
+				<div  id="new" class="12u 12u$(small)">
+					<input id="add_btn" type="submit" value="Add new" class="button special small"/>
+				</div>
+				<div id="cancel" class="12u 12u$(small) hidden">
+					<input id="cancel_btn" type="submit" value="Close" class="button special small right"/>
+				</div>
+                <div id="add_dependent_form" class="12u 12u$(small) hidden">
+								<h3>Register Dependencies</h3>
+								<form method="post" action="">
+                                     {% csrf_token %}
+                                    {{form}}
+                                    <br>
+                                    <input type="submit" value="Register" class="button special small"/>
+                                </form>
+                </div>
+                <div id="dependent_list" class="12u$ 12u$(small)">
+                                <div >
+									<br>
+									<div class="flex flex-4">
+										{% for dependent in dependencies_list %}
+										<div class="box">
+											<h3>{{dependent.first_name}}  {{dependent.last_name}}</h3>
+											<p>{{dependent.date_of_birth.date}}</p>
+											<p>{{dependent.age}}</p>
+											<hr>
+											<a href="/account/delete_dependend/{{dependent.id}}" class="fa fa-trash"></a> &nbsp; 
+											<a href="/account/update_dependent/{{dependent.id}}" onclick="showEdit()" class="fa fa-edit"></a>  &nbsp; 
+										</div>
+										{% endfor %}
+									</div>
+								</div>
+
+            </div>
+                </div>
+
+            
+            </div>
+        </section>
+
+        
+{% endblock %}

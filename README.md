@@ -1,5 +1,10 @@
 #Create a virtual environment
-#Install requirement from requirements.txt
+
+#Install requirement
+
+```
+pip3 install -r requirements.txt
+```
 
 #create superuser
 
